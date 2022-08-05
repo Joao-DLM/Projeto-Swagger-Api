@@ -1,0 +1,39 @@
+swagger: '2.0'
+
+info:
+  version: 0.1.0
+  title: AS Template Flask API
+  description: 'Template flask padrão APIs REST..'
+  contact:
+    email: silva.almeida@ibm.com
+
+schemes:
+  - http
+
+tags:
+  - name: AS Template
+    description: 'Welcome to AS Template Flask API.'
+
+paths:
+  /main/{name}:
+    parameters: 
+      name: name,
+      in: path,
+      required: true,
+      description: name of the character,
+      type: string
+    get:
+      description: Returns all characters from the system that the user has access to
+    produces:
+      - application/json
+    responses:
+      '200':
+        description: A list of characters.
+        schema:
+          type: string
+          items:
+            $ref: '#/definitions/main'
+            
+definitions:
+  main:
+    type: string
